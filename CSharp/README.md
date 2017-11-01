@@ -1,3 +1,3 @@
 # C#
 
-This repository is a personal collection of notes, code snippets, and programs for learning and using the C# programming language.
+A collection of notes, snippets, and programs for learning and using C#.
