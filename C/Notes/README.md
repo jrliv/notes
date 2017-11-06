@@ -51,13 +51,6 @@ Here are a few different formats for data types used:
 	<li>%x - Hexadecimal.</li>
 </ul>
 
-### How to print a random number
-
-To print a random number, use the <b>srand()</b> and <b>time()</b> methods to create a seed. Then assign the random value from the <b>rand()</b> method to a variable like below:
-
-	srand(time(NULL));
-    int number_to_guess = rand() % 100 + 1;	// generates a random number between 1 and 100
-
 ### Escape sequences
 
 <ul>
@@ -67,6 +60,23 @@ To print a random number, use the <b>srand()</b> and <b>time()</b> methods to cr
 	<li>Double-quote character: \"</li>
 	<li>Backlash character: \\</li>
 </ul>
+
+### How to print a random number
+
+To print a random number, use the <b>srand()</b> and <b>time()</b> methods to create a seed. Then assign the random value from the <b>rand()</b> method to a variable like below:
+
+	srand(time(NULL));
+    int number_to_guess = rand() % 100 + 1;	// generates a random number between 1 and 100
+
+### How to get any type of input from a user
+
+Store the input in a char array. Example:
+
+	char user_input[10];
+    printf("Enter your input:\n");
+    scanf("%c", &user_input);
+
+This will allow the user to enter any kind of input necessary (letters, numbers, or special chars) as long as it's not over 10 characters.
 
 ## Working with input
 
@@ -216,6 +226,15 @@ A string in C is an array of characters that end with a null (\0). C doesn't hav
 	<li><b>strcat()</b> – concatenates strings</li>
 	<li><b>strcmp()</b> – compares the values of strings</li>
 </ul>
+
+### How to use strcmp() to compare strings
+
+Here is a quick example of how to use <b>strcmp()</b> to compare two strings. In this example if the string in <b>player_guess</b> is equal to <b>PASS</b> then a message will be printed.
+
+	if (strcmp(player_guess, "PASS"))
+    {
+        printf("You passed your turn to guess.\n");
+    }
 
 ## Working with files 
 
