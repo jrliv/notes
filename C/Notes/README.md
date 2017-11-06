@@ -25,6 +25,7 @@ You can use <b>/out:executable.exe</b> to name the executable file. Otherwise th
 	<li>math.h: Mathematics functions</li>
 	<li>time.h: Time and Date functions</li>
 	<li>stdlib.h: Miscellaneous functions</li>
+	<li>stdbool.h: Boolean types and functions</li>
 </ul>
 
 ## Printing output
@@ -50,6 +51,13 @@ Here are a few different formats for data types used:
 	<li>%x - Hexadecimal.</li>
 </ul>
 
+### How to print a random number
+
+To print a random number, use the <b>srand()</b> and <b>time()</b> methods to create a seed. Then assign the random value from the <b>rand()</b> method to a variable like below:
+
+	srand(time(NULL));
+    int number_to_guess = rand() % 100 + 1;	// generates a random number between 1 and 100
+
 ### Escape sequences
 
 <ul>
@@ -62,11 +70,25 @@ Here are a few different formats for data types used:
 
 ## Working with input
 
+### scanf()
+
 scanf() is a C library function that allows a program to get data from the user. Like printf() it has a set of arguments for formatting and a second set for the values. The second group of arguments for scanf often include an ampersand symbol because they refer to pointers and not an actual location.
 
 Example:
 
 	scanf("%s", input_str);
+
+### getchar()
+
+getchar() is another C stdio library function that reads a single character from stdin (standard input).
+
+getchar() has no parameters and its sole function is to read the next character as an unsigned char and return its value converted to an integer.
+
+### gets() and puts()
+
+The gets() and puts() functions are two other options that can be used for working with input and output.
+
+*Note: I tried used these once and couldn't get them to work. Maybe I was doing something wrong. Will update if I learn anything new about these functions.
 
 ## Pointers
 
@@ -395,6 +417,4 @@ Here is an example of defining a structure then using it.
 
 ## Random
 
-getchar() is a stdio library function that reads a single character from stdin (standard input).
 
-getchar() has no parameters and its sole function is to read the next character as an unsigned char and return its value converted to an integer.
