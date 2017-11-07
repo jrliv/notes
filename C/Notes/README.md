@@ -1,5 +1,17 @@
 # C Notes
 
+## Contents
+
+* [Compilation](#compilation)
+* [Libraries](#common-libraries)
+* [Printing output](#printing-output)
+* [Getting input](#getting-input)
+* [Pointers](#pointers)
+* [Arrays](#arrays)
+* [Strings](#strings)
+* [Working with files](#working-with-files)
+* [Structures](#structures)
+
 ## Compilation
 
 ### How to compile and execute using GNU Compiler Collection (gcc)
@@ -78,7 +90,7 @@ Store the input in a char array. Example:
 
 This will allow the user to enter any kind of input necessary (letters, numbers, or special chars) as long as it's not over 10 characters.
 
-## Working with input
+## Getting input
 
 ### scanf()
 
@@ -433,7 +445,3 @@ Here is an example of defining a structure then using it.
 
 	customer_db *cust_pointer;
 	cust_pointer -> name = "Brandon";
-
-## Random
-
-
