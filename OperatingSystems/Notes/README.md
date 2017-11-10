@@ -6,11 +6,12 @@ These are my random notes on operating systems in general. There may be some not
 
 * [What is an operating system?](#what-is-an-operating-system)
 * [Pipeline approach](#pipeline-approach)
-* [Memory registers, cache, RAM, and disks](#memory-registers-cache-ram-and-disks)
+* [Memory hierarchy - registers, cache, RAM, and disks](#memory-registers-cache-ram-and-disks)
     * [Memory registers](#memory-registers)
     * [Cache](#cache)
     * [RAM](#ram)
     * [Disks](#disks)
+* [References and resources](#references-and-resources)
 
 ## What is an operating system?
 
@@ -22,9 +23,9 @@ An operating system is a layer of software that manages the hardware resources i
 
 In order to improve performance, the older CPU architecture that performed fetching, decoding, and executing one instruction at a time (sequential processing) was replaced. Modern CPUs use the **pipeline** approach for executing the three functions (fetch, decode, execute) in parallel.
 
-## Memory registers, cache, RAM, and disks
+## Memory hierarchy - registers, cache, RAM, and disks
 
-Since current technology can't satisfy the goals of have memory that is extremely fast, abundant, and cheap, most systems use a layered hierarchy approach.
+Since current technology can't satisfy the goals of having memory that is extremely fast, abundant, and cheap, most systems use a layered hierarchy approach.
 
 ![Memory hierarchy](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/MemoryHierarchy.JPG)
 
@@ -45,45 +46,35 @@ Special purpose registers are useful for programmers. One register is the **prog
 Cache memory is extremely small and fast. It's usually built into the CPU or on a seperate chip that is beside the CPU. The CPU uses cache memory to store instructions that are repeatedly required so it doesn't have to use the motherboard’s system bus for data transfer. This eliminates the chances of bottlenecks and improves the overall speed of the system.
 
 > In any caching system, several questions come up fairly soon, including:
-    > 1. When to put a new item into the cache.
-    > 2. Which cache line to put the new item in.
-    > 3. Which item to remove from the cache when a slot is needed.
-    > 4. Where to put a newly evicted item in the larger memory.
+> 1. When to put a new item into the cache.
+> 2. Which cache line to put the new item in.
+> 3. Which item to remove from the cache when a slot is needed.
+> 4. Where to put a newly evicted item in the larger memory.
 
 Modern CPUs usually consist of two caches; level one cache (L1) and level two cache (L2). **L1 cache** is located inside of the CPU. It sends decoded instructions to the location in the CPU that will execute them. Some CPUs contain two L1 caches so one can send decoded instructions and the other can store recently used memory words. **L2 cache** also stores recently used memory words but it can store several megabytes worth where L1 cache is usually measured in kilobytes. In multicore CPUs, L2 cache can shared or separate among the cores. It's usually shared by all of the cores. Accessing L1 cache can usually be done without any delay. Accessing L2 cache usually consists of a delay of one or two clock cycles.
 
 ### RAM
 
-**RAM (Random Access Memory)** is usually considered the main memory in a system.
+**RAM (Random Access Memory)** is usually considered the *main* memory in a system. It's also known as core memory to some. Most modern computers contain several gigabytes of RAM. Instructions in the CPU that can't be stored or satisfied from the cache will go to main memory.
 
->  All CPU requests that cannot be satisfied out of the cache go to main memory.
+Along with RAM, most computers also have a small amount of memory called **ROM (Read Only Memory)**. ROM is *non-volatile* memory, meaning it won't lose data when the power to the computer is turned off. On some computers and devices, the bootstrap loader used to start the computer, is contained in the ROM. This design was created by Gary Kildall. ROMs are typically developed at the factory where the device they will be used in is manufactured. They usually can't be changed afterward.
 
-> In addition to the main memory, many computers have a small amount of nonvolatile random-access memory. Unlike RAM, nonvolatile memory does not lose
-its contents when the power is switched off. ROM (Read Only Memory) is programmed at the factory and cannot be changed afterward. It is fast and inexpensive. On some computers, the bootstrap loader used to start the computer is contained in ROM. Also, some I/O cards come with ROM for handling low-level device control.
+**EEPROM (Electrically Erasable Programmable ROM)** and **flash memory** are other forms of non-volatile memory. Unlike ROMs, they can be changed but writing these changes takes a lot more time than writing RAM, so they are typically used the same way as ROMs. To change EPROMs, they have to be completely erased and rewritten to make changes. Flash memory costs less than EPROMs and it can be changed faster. However, a main disadvantage of flash memory is that it can only be erased and written to a finite amount of times. Flash memory is also used as extended storage. They can be found in personal computers, mobile phones, audio players, digital cameras, video games, etc.
 
-> EEPROM (Electrically Erasable PROM) and flash memory are also nonvolatile, but in contrast to ROM can be erased and rewritten. However, writing
-them takes orders of magnitude more time than writing RAM, so they are used in
-the same way ROM is, only with the additional feature that it is now possible to
-correct bugs in programs they hold by rewriting them in the field.
-
-> Flash memory is also commonly used as the storage medium in portable electronic devices. It serves as film in digital cameras and as the disk in portable music
-players, to name just two uses. Flash memory is intermediate in speed between
-RAM and disk. Also, unlike disk memory, if it is erased too many times, it wears
-out.
-
-> Yet another kind of memory is CMOS, which is volatile. Many computers use
-CMOS memory to hold the current time and date. The CMOS memory and the
-clock circuit that increments the time in it are powered by a small battery, so the
-time is correctly updated, even when the computer is unplugged. The CMOS memory can also hold the configuration parameters, such as which disk to boot from.
-CMOS is used because it draws so little power that the original factory-installed
-battery often lasts for several years. However, when it begins to fail, the computer
-can appear to have Alzheimer’s disease, forgetting things that it has known for
-years, like which hard disk to boot from.
+**CMOS (Complimentary Metal-Oxide Semi-conductor)** memory is volatile memory that is used to hold the current time and date in a computer. It's powered by a small battery meant to last several years to give it a non-volatile effect by keeping the time and date updated when the computer is powered off. 
 
 ### Disks
 
+A disk is a metal platter that is used in disk drives for storing data. A disk rotates along side other disks in the disk drive while a mechanical arm with a "head" attached on the end goes over the platters (similar to a record player) to read and write data.
 
+> Information is written onto the disk in a series of concentric circles. At any given arm position, each of the heads can read an annular region called a **track**. Together, all the tracks for a given arm position form a **cylinder**. Each track is divided into some number of **sectors**, typically 512 bytes per sector.
 
 ## References and resources
 
 * [Modern Operating Systems (4th Edition)](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
+* [Operating System Tutorial](http://www.tutorialspoint.com/operating_system/)
+* [Computer Operating Systems](https://www.computerhope.com/os.htm)
+* [Operating system - Wikipedia](https://en.wikipedia.org/wiki/Operating_system)
+
+---------------------------------------------------------------------------------
+[Back to top](#operating-systems-notes)
