@@ -11,6 +11,7 @@ These are my random notes on operating systems in general. There may be some not
     * [Cache](#cache)
     * [RAM](#ram)
     * [Disks](#disks)
+* [Interrupts](#interrupts)
 * [References and resources](#references-and-resources)
 
 ## What is an operating system?
@@ -68,6 +69,14 @@ Along with RAM, most computers also have a small amount of memory called **ROM (
 A disk is a metal platter that is used in disk drives for storing data. A disk rotates along side other disks in the disk drive while a mechanical arm with a "head" attached on the end goes over the platters (similar to a record player) to read and write data.
 
 > Information is written onto the disk in a series of concentric circles. At any given arm position, each of the heads can read an annular region called a **track**. Together, all the tracks for a given arm position form a **cylinder**. Each track is divided into some number of **sectors**, typically 512 bytes per sector.
+
+### Interrupts
+
+> An **interrupt** is initiated by an I/O device. A device on the bus (a printer, for instance) asserts on the CPU's interrupt line and places the interrupt vector number on the data bus. Using this information the CPU can get the printers interrupt service routine stops its current process, save its context, jumps to the signaled interrupt service routine, completes that routine, restores the saved context and then continues on with program execution.
+
+> Interrupts can happen at inconvenient times (another interrupt handler is running). The CPU can disable interrupts temporarily complete and operation, and re-enable interrupts to prevent confusion. If multiple devices signal interrupts, static priorities are often assigned to devices and higher priority devices win.
+
+*Start back on 1.5.1 Processes*
 
 ## References and resources
 
