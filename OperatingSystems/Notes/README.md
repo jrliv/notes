@@ -13,6 +13,7 @@ These are my random notes on operating systems in general. There may be some not
     * [Disks](#disks)
 * [Interrupts](#interrupts)
 * [Processes](#processes)
+* [Fork System Call](#fork-system-call)
 * [References and resources](#references-and-resources)
 
 ## What is an operating system?
@@ -83,7 +84,29 @@ An **interrupt** is a signal that's initiated by an I/O device to signal the com
 
 ## Processes
 
+A **process** is essentially a task or a program that is still currently running or executing. It works as a container that holds all of the data needed to run a program. In order to run several applications at once, most operating systems have to manage their processes by stopping, suspending, and restarting them periodically.
 
+For example:
+
+> The user may have started a video editing program and instructed it to convert a one-hour video to a certain format (something that can take hours) and then gone off to surf the Web. Meanwhile, a background process that wakes up periodically to check for incoming email may have started running. Thus we have (at least) three active processes: the video editor, the Web browser, and the email receiver. Periodically, the operating system decides to stop running one process and start running another, perhaps because the first one has used up more than its share of CPU time in the past second or two.
+
+> When a process is suspended temporarily like this, it must later be restarted in exactly the same state it had when it was stopped. This means that all information about the process must be explicitly saved somewhere during the suspension. For example, the process may have sev eral files open for reading at once. Associated with each of these files is a pointer giving the current position (i.e., the number of the byte or record to be read next). When a process is temporarily suspended, all these pointers must be saved so that a read call executed after the process is restarted will read the proper data. In many operating systems, all the information about each process, other than the contents of its own address space, is stored in an operating system table called the **process table**, which is an array of structures, one for each process currently in existence.
+
+> Thus, a (suspended) process consists of its address space, usually called the **core image** (in honor of the magnetic core memories used in days of yore), and its process table entry, which contains the contents of its registers and many other items needed to restart the process later.
+
+> The key process-management system calls are those dealing with the creation and termination of processes. Consider a typical example. A process called the **command interpreter** or shell reads commands from a terminal. The user has just typed a command requesting that a program be compiled. The shell must now create a new process that will run the compiler. When that process has finished the compilation, it executes a system call to terminate itself.
+
+Processes can create one or more processes that are called **child processes**. Child processes can create their own child classes as well and so forth. A lot of these related processes will need to work together to get a task done therefore they use **interprocess communication** to communicate with one another.
+
+## Fork System Call
+
+The **fork()** call is an important system call for process management. It's used to create a new process in UNIX and any other system that used POSIX standards. When called, it creates (*forks*) a copy (child process) of the original process (parent). The processes are seperate. Any changes made to the processes will not affect each other.
+
+As an example, using a similar idea projects in GitHub are often forked in order for one user to get a copy of another user's project and work on it locally.
+
+> The fork call returns a value, which is zero in the child and equal to the child’s **PID (Process IDentifier)** in the parent. Using the returned PID, the two processes can see which one is the parent process and which one is the child process.
+
+![Process management system calls](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessManagementSystemCalls.JPG)
 
 ## References and resources
 
