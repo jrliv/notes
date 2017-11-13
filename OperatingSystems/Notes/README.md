@@ -12,6 +12,7 @@ These are my random notes on operating systems in general. There may be some not
     * [RAM](#ram)
     * [Disks](#disks)
 * [Interrupts](#interrupts)
+* [Processes](#processes)
 * [References and resources](#references-and-resources)
 
 ## What is an operating system?
@@ -70,13 +71,19 @@ A disk is a metal platter that is used in disk drives for storing data. A disk r
 
 > Information is written onto the disk in a series of concentric circles. At any given arm position, each of the heads can read an annular region called a **track**. Together, all the tracks for a given arm position form a **cylinder**. Each track is divided into some number of **sectors**, typically 512 bytes per sector.
 
-### Interrupts
+## Interrupts
 
-> An **interrupt** is initiated by an I/O device. A device on the bus (a printer, for instance) asserts on the CPU's interrupt line and places the interrupt vector number on the data bus. Using this information the CPU can get the printers interrupt service routine stops its current process, save its context, jumps to the signaled interrupt service routine, completes that routine, restores the saved context and then continues on with program execution.
+An **interrupt** is a signal that's initiated by an I/O device to signal the completion of an I/O instruction. 
 
-> Interrupts can happen at inconvenient times (another interrupt handler is running). The CPU can disable interrupts temporarily complete and operation, and re-enable interrupts to prevent confusion. If multiple devices signal interrupts, static priorities are often assigned to devices and higher priority devices win.
+> A device on the bus (a printer, for instance) asserts on the CPU's interrupt line and places the interrupt vector number on the data bus. Using this information, the CPU then gets the printers interrupt service routine and stops its current process, saves its context, jumps to the signaled interrupt service routine, completes that routine, then restores the saved context and continues on with program execution.
 
-*Start back on 1.5.1 Processes*
+> Interrupts can happen at inconvenient times (like when another interrupt handler is running). The CPU can disable interrupts temporarily complete an operation, and then re-enable interrupts to prevent confusion. If multiple devices signal interrupts, static priorities are often assigned to devices allowing the higher priority devices to win.
+
+![I/O Process](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/IO-Process.JPG)
+
+## Processes
+
+
 
 ## References and resources
 
