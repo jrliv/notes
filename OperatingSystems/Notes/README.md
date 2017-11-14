@@ -11,6 +11,10 @@
     * [Disks](#disks)
 * [Interrupts](#interrupts)
 * [Processes](#processes)
+   * [Creation](#creation)
+   * [Termination](#termination)
+   * [States](#states)
+   * [Implementation](#implementation)
 * [System calls](#system-calls)
     * [Fork System Call](#fork-system-call)
     * [Process management](#process-management)
@@ -91,8 +95,6 @@ An **interrupt** is a signal that's initiated by an I/O device to signal the com
 
 A **process** is essentially a task or a program that is still currently running or executing. It works as a container that holds all of the data needed to run a program. In order to run several applications at once, most operating systems have to manage their processes by stopping, suspending, and restarting them periodically.
 
-For example:
-
 > The user may have started a video editing program and instructed it to convert a one-hour video to a certain format (something that can take hours) and then gone off to surf the Web. Meanwhile, a background process that wakes up periodically to check for incoming email may have started running. Thus we have (at least) three active processes: the video editor, the Web browser, and the email receiver. Periodically, the operating system decides to stop running one process and start running another, perhaps because the first one has used up more than its share of CPU time in the past second or two.
 
 > When a process is suspended temporarily like this, it must later be restarted in exactly the same state it had when it was stopped. This means that all information about the process must be explicitly saved somewhere during the suspension. For example, the process may have sev eral files open for reading at once. Associated with each of these files is a pointer giving the current position (i.e., the number of the byte or record to be read next). When a process is temporarily suspended, all these pointers must be saved so that a read call executed after the process is restarted will read the proper data. In many operating systems, all the information about each process, other than the contents of its own address space, is stored in an operating system table called the **process table**, which is an array of structures, one for each process currently in existence.
@@ -102,6 +104,43 @@ For example:
 > The key process-management system calls are those dealing with the creation and termination of processes. Consider a typical example. A process called the **command interpreter** or shell reads commands from a terminal. The user has just typed a command requesting that a program be compiled. The shell must now create a new process that will run the compiler. When that process has finished the compilation, it executes a system call to terminate itself.
 
 Processes can create one or more processes that are called **child processes**. Child processes can create their own child classes as well and so forth. A lot of these related processes will need to work together to get a task done therefore they use **interprocess communication** to communicate with one another.
+
+### Creation
+
+> Four principal events cause processes to be created:
+> 1. System initialization. The system boots up and initializes the *init* process.
+> 2. Execution of a process-creation system call by a running process.
+> 3. A user request to create a new process. Users can create a new process from within a program.
+> 4. Initiation and execution of a batch job.
+
+### Termination
+
+> Sooner or later the new process will terminate, usually due to one of the following conditions:
+> 1. Normal exit (voluntary).
+> 2. Error exit (voluntary).
+> 3. Fatal error (involuntary).
+> 4. Killed by another process (involuntary).
+
+### States
+
+> Processes are in one of three possible states:
+> 1. Running – has the focus of the CPU
+> 2. Ready – runnable but temporarily stopped while another process has the focus of the CPU
+> 3. Blocked – unable to run until some external event completes
+
+> Logically, the first two states are similar. In both cases the process is willing to run, only in the second one, there is temporarily no CPU available for it. The third state is fundamentally different from the first two in that the process cannot run, even if the CPU is idle and has nothing else to do.
+
+> There are four possible transitions among these three states:
+
+![Process states](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessStates.JPG)
+
+### Implementation
+
+> To implement the process model, the OS maintains a data structure called a **process table** with one entry per process. This process table entry contains all the relevant information about the state of the process including its program counter, stack pointer, memory allocation, and anything that must be saved to allow the process to resume if it's switched from running to either ready or blocked state.
+
+Here are some of the fields of a typical process table entry:
+
+![Process table](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessTable.JPG)
 
 ## System Calls
 
@@ -145,9 +184,21 @@ As an example, using a similar idea projects in GitHub are often forked in order
 
 ### Client-Server Model
 
-> A slight variation of the microkernel idea is to distinguish two classes of processes, the servers, each of which provides some service, and the clients, which use these services. This model is known as the client-server model. Often the lowest layer is a microkernel, but that is not required. The essence is the presence of client processes and server processes.
+The client-server model involves using **servers** to provide services and **clients** that use the services. To use the services clients connect to the servers to send messages (data and requests) back and forth. The model can be used for a single computer or for multiple computers that can act as clients and servers on a network.
 
 ### Virtual machines
+
+A virtual machine is an emulation of a computer running an operating system within another computer. It provides the functionality of a physical computer.
+
+> Virtualization has been around since the 1970’s and IBM pioneered its use on mainframe systems.
+
+> The VM/370 from IBM provides multiple exact copies of bare hardware machines including kernel/user mode, I/O, interrupts and everything else resident on a physical “real” machine. Each of these “virtual machines” being identical in hardware can run any operating system that can run directly on “real” hardware.
+
+![Virtual machine model](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/VM-Model.JPG)
+
+> Virtualization permits running multiple separate virtual machines on a single physical core machine, each virtual appears to be a complete machine. Virtualization also allows multiple OS’s to run on the same physical machine simultaneously (Linux, Windows, etc.).
+
+> Early implementations on Pentium CPU’s ran into issues because of the requirement for hardware trapping could not be supplied. VMware originated at Stanford and was developed to address this issue. It was eventually commercialized.
 
 ## References and resources
 
