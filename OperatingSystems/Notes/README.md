@@ -1,7 +1,5 @@
 # Operating Systems Notes
 
-These are my random notes on operating systems in general. There may be some notes more related to some systems vs others but they are meant to be ideas related to operating systems in general. If I create notes that are more related and detailed to a specific system then I will create a seperate folder for them inside of the `OperatingSystems` folder.
-
 ## Contents
 
 * [What is an operating system?](#what-is-an-operating-system)
@@ -106,14 +104,10 @@ As an example, using a similar idea projects in GitHub are often forked in order
 
 > The fork call returns a value, which is zero in the child and equal to the child’s **PID (Process IDentifier)** in the parent. Using the returned PID, the two processes can see which one is the parent process and which one is the child process.
 
-Example:
-
 > x = fork() 
-> What will the value of x be after the fork? It will either be 0 or the id of the child that got forked.
-
-> What is the value returned to the parent? The id of the child. 
-
-> What is the value returned to the child process that gets created by the fork? 0
+> 1. What will the value of x be after the fork? <u>It will either be 0 or the id of the child that got forked.</u>
+> 2. What is the value returned to the parent? <u>The id of the child.</u> 
+> 3. What is the value returned to the child process that gets created by the fork? <u>0</u>
 
 ![Process management system calls](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessManagementSystemCalls.JPG)
 
@@ -122,7 +116,7 @@ Example:
 > Now consider how fork is used by the shell. When a command is typed, the shell forks off a new process. This child process must execute the user command. It does this by using the **execve(name, argv, environp)** (also called exec) system call, which causes its entire core image to be replaced by the file named in its first parameter. The execve system call can be used to have a compiled program run in the place of the child process that gets forked.
 
 > Why should there always be a wait statement in the parent of a fork? 
-> The parent has to wait for the child to send a signal when it terminates to the parent. If the parent is not alive to receive the signal the child will become a zombie process.
+> The parent has to wait for the child to send a signal when it terminates to the parent. <u>If the parent is not alive to receive the signal the child will become a zombie process.</u>
 
 ## References and resources
 
