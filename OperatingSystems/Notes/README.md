@@ -14,6 +14,9 @@
 * [System calls](#system-calls)
     * [Fork System Call](#fork-system-call)
     * [Process management](#process-management)
+* [Operating system structures](#operating-system-structures)
+    * [Client-Server model](#client-server-model)
+    * [Virtual machines](#virtual-machines)
 * [References and resources](#references-and-resources)
 
 ## What is an operating system?
@@ -134,9 +137,17 @@ As an example, using a similar idea projects in GitHub are often forked in order
 > 2. The **data segment** (the variables)
 > 3. The **stack segment**
 
+> The data segment grows upward and the stack grows downward. Between them is a gap of unused address space. The stack grows into the gap automatically, as needed, but expansion of the data segment is done explicitly by using a system call **brk**, which specifies the new address where the data segment is to end. This call, however, is not defined by the POSIX standard, since programmers are encouraged to use the **malloc** library procedure in C for dynamically allocating storage, and the underlying implementation of malloc was not thought to be a suitable subject for standardization since few programmers use it directly and it is doubtful that anyone even notices that brk is not in POSIX.
+
 ![Process memory segments](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessMemorySegments.JPG)
 
-> The data segment grows upward and the stack grows downward. Between them is a gap of unused address space. The stack grows into the gap automatically, as needed, but expansion of the data segment is done explicitly by using a system call **brk**, which specifies the new address where the data segment is to end. This call, however, is not defined by the POSIX standard, since programmers are encouraged to use the **malloc** library procedure in C for dynamically allocating storage, and the underlying implementation of malloc was not thought to be a suitable subject for standardization since few programmers use it directly and it is doubtful that anyone even notices that brk is not in POSIX.
+## Operating system structures
+
+### Client-Server Model
+
+> A slight variation of the microkernel idea is to distinguish two classes of processes, the servers, each of which provides some service, and the clients, which use these services. This model is known as the client-server model. Often the lowest layer is a microkernel, but that is not required. The essence is the presence of client processes and server processes.
+
+### Virtual machines
 
 ## References and resources
 
