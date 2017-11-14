@@ -105,9 +105,9 @@ As an example, using a similar idea projects in GitHub are often forked in order
 > The fork call returns a value, which is zero in the child and equal to the child’s **PID (Process IDentifier)** in the parent. Using the returned PID, the two processes can see which one is the parent process and which one is the child process.
 
 > x = fork() 
-> 1. What will the value of x be after the fork? <u>It will either be 0 or the id of the child that got forked.</u>
-> 2. What is the value returned to the parent? <u>The id of the child.</u> 
-> 3. What is the value returned to the child process that gets created by the fork? <u>0</u>
+> 1. What will the value of x be after the fork? **It will either be 0 or the id of the child that got forked.**
+> 2. What is the value returned to the parent? **The id of the child.** 
+> 3. What is the value returned to the child process that gets created by the fork? **0**
 
 ![Process management system calls](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessManagementSystemCalls.JPG)
 
@@ -116,7 +116,7 @@ As an example, using a similar idea projects in GitHub are often forked in order
 > Now consider how fork is used by the shell. When a command is typed, the shell forks off a new process. This child process must execute the user command. It does this by using the **execve(name, argv, environp)** (also called exec) system call, which causes its entire core image to be replaced by the file named in its first parameter. The execve system call can be used to have a compiled program run in the place of the child process that gets forked.
 
 > Why should there always be a wait statement in the parent of a fork? 
-> The parent has to wait for the child to send a signal when it terminates to the parent. <u>If the parent is not alive to receive the signal the child will become a zombie process.</u>
+> The parent has to wait for the child to send a signal when it terminates to the parent. **If the parent is not alive to receive the signal the child will become a zombie process.**
 
 ## References and resources
 
