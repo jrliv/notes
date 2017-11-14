@@ -11,14 +11,18 @@
     * [Disks](#disks)
 * [Interrupts](#interrupts)
 * [Processes](#processes)
-* [Fork System Call](#fork-system-call)
+* [System calls](#system-calls)
+    * [Fork System Call](#fork-system-call)
+    * [Process management](#process-management)
 * [References and resources](#references-and-resources)
 
 ## What is an operating system?
 
 An operating system is a layer of software that manages the hardware resources in a computer and provides a base for all of the user software that runs on top of it.
 
-> An important distinction between the operating system and normal (usermode) software is that if a user does not like a particular email reader, he† is free to get a different one or write his own if he so chooses; he is not free to write his own clock interrupt handler, which is part of the operating system and is protected by hardware against attempts by users to modify it.
+> The main purposes of the operating system is to provide abstractions (create, read, write, delete files) for user programs and manage computer resources.
+
+> An important distinction between the operating system and normal (usermode) software is that if a user does not like a particular email reader, they are free to get a different one or write their own if they choose; they are not free to write their own clock interrupt handler, which is part of the operating system and is protected by hardware against attempts by users to modify it.
 
 ## Pipeline approach
 
@@ -96,7 +100,13 @@ For example:
 
 Processes can create one or more processes that are called **child processes**. Child processes can create their own child classes as well and so forth. A lot of these related processes will need to work together to get a task done therefore they use **interprocess communication** to communicate with one another.
 
-## Fork System Call
+## System Calls
+
+A system call is a special function or procedure called by the operating system when a user program needs a system service. System calls enter the kernel and provide an interface between a process and the operating system.
+
+> Any single-CPU computer can execute only one instruction at a time. If a process is running a user program in user mode and needs a system service, such as reading data from a file, it has to execute a trap instruction to transfer control to the operating system. The operating system then figures out what the calling process wants by inspecting the parameters. Then it carries out the system call and returns control to the instruction following the system call. In a sense, making a system call is like making a special kind of procedure call, only system calls enter the kernel and procedure calls do not.
+
+### Fork System Call
 
 The **fork()** call is an important system call for process management. It's used to create a new process in UNIX and any other system that used POSIX standards. When called, it creates (*forks*) a copy (child process) of the original process (parent). The processes are seperate. Any changes made to the processes will not affect each other.
 
@@ -115,8 +125,18 @@ As an example, using a similar idea projects in GitHub are often forked in order
 
 > Now consider how fork is used by the shell. When a command is typed, the shell forks off a new process. This child process must execute the user command. It does this by using the **execve(name, argv, environp)** (also called exec) system call, which causes its entire core image to be replaced by the file named in its first parameter. The execve system call can be used to have a compiled program run in the place of the child process that gets forked.
 
-> Why should there always be a wait statement in the parent of a fork? 
-> The parent has to wait for the child to send a signal when it terminates to the parent. **If the parent is not alive to receive the signal the child will become a zombie process.**
+> 1. Why should there always be a wait statement in the parent of a fork? **The parent has to wait for the child to send a signal when it terminates to the parent. If the parent is not alive to receive the signal the child will become a zombie process.**
+
+### Process management
+
+> Processes in UNIX have their memory divided up into three segments: 
+> 1. The **text segment** (the program *code*)
+> 2. The **data segment** (the variables)
+> 3. The **stack segment**
+
+![Process memory segments](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessMemorySegments.JPG)
+
+> The data segment grows upward and the stack grows downward. Between them is a gap of unused address space. The stack grows into the gap automatically, as needed, but expansion of the data segment is done explicitly by using a system call **brk**, which specifies the new address where the data segment is to end. This call, however, is not defined by the POSIX standard, since programmers are encouraged to use the **malloc** library procedure in C for dynamically allocating storage, and the underlying implementation of malloc was not thought to be a suitable subject for standardization since few programmers use it directly and it is doubtful that anyone even notices that brk is not in POSIX.
 
 ## References and resources
 
