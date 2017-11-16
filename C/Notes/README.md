@@ -248,6 +248,10 @@ Here is a quick example of how to use <b>strcmp()</b> to compare two strings. In
         printf("You passed your turn to guess.\n");
     }
 
+### Convert string to integer
+
+You can use the `atoi()` or `strtol()` functions from the `stdlib.h` class.
+
 ## Working with files 
 
 ### File operations
