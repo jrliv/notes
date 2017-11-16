@@ -22,3 +22,13 @@ Hit Ctrl-d
 
     java -cp clojure-1.8.0.jar clojure.main programname.clj
 
+## References and resources
+
+* [Official Clojure Website](https://clojure.org/)
+* [Pathway clojure](http://pathwayclojure.org/)
+* [Brief Beginner's Guide To Clojure](http://www.unexpected-vortices.com/clojure/brief-beginners-guide/index.html)
+* [Learn Clojure](http://www.learn-clojure.com/)
+* [Clojure Tutorial](http://www.tutorialspoint.com/clojure/)
+
+---------------------------------------------------------------------------
+[Back to top](#clojure-notes)
