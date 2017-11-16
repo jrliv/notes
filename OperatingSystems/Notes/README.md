@@ -194,7 +194,7 @@ A virtual machine is an emulation of a computer running an operating system with
 
 > The VM/370 from IBM provides multiple exact copies of bare hardware machines including kernel/user mode, I/O, interrupts and everything else resident on a physical “real” machine. Each of these “virtual machines” being identical in hardware can run any operating system that can run directly on “real” hardware.
 
-![Virtual machine model](/Images/VM-Model.JPG)
+![Virtual machine model](/../Images/VM-Model.JPG)
 
 > Virtualization permits running multiple separate virtual machines on a single physical core machine, each virtual appears to be a complete machine. Virtualization also allows multiple OS’s to run on the same physical machine simultaneously (Linux, Windows, etc.).
 
