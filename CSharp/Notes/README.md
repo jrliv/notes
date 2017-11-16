@@ -1,4 +1,10 @@
-# C# Notes
+# CSharp Notes
+
+## Contents
+
+* [Objects](#objects)
+* [Classes](#classes)
+* [Namespaces](#namespaces)
 
 ## Objects
 
@@ -12,9 +18,9 @@ Examples of real-world objects are people, cars, goods, purchases, etc. abstract
 
 Objects usually consist of two main characteristics:
 
-<b>States</b> – these are the characteristics of the object which define it in a way and describe it in general or in a specific moment (usually nouns)
+**States** – these are the characteristics of the object which define it in a way and describe it in general or in a specific moment (usually nouns)
 
-<b>Behavior</b> – these are the specific distinctive actions, which can be done by the object. (usually verbs)
+**Behavior** – these are the specific distinctive actions, which can be done by the object. (usually verbs)
 
 For example a real-world object such as a person can have descriptive states such as "name", "age", "gender", etc. and their behaviors could consist of "talking", "walking", "sitting", etc.
 
@@ -22,13 +28,13 @@ These can be thought of as data members, embedded in object variables which desc
 
 ### Creating objects
 
-Objects are created from pre-defined classes using the <b>new</b> operator/keyword. They are usually assigned to a variable name of the class type. Here is an example of creating an object called dogObject from the Dog class.
+Objects are created from pre-defined classes using the **new** operator/keyword. They are usually assigned to a variable name of the class type. Here is an example of creating an object called dogObject from the Dog class.
 
     Dog dogObject = new Dog();
 
-It's important to remember that <b>dogObject</b> is an instance of the <b>Dog</b> class. <b>dogObject</b> is a <i>reference</i> variable to the newly created object on the heap. The variable <b>dogObject</b> contains or "points to" the address in memory (or on the heap) that holds the object value.
+It's important to remember that **dogObject** is an instance of the **Dog** class. **dogObject** is a *reference* variable to the newly created object on the heap. The variable **dogObject** contains or "points to" the address in memory (or on the heap) that holds the object value.
 
-Depending on if you have a <b>constructor</b> that takes them, parameters can also be used when creating an object:
+Depending on if you have a **constructor** that takes them, parameters can also be used when creating an object:
 
     Dog dogObject = new Dog("Scruffy", "brown", "st. bernard");
 
@@ -38,19 +44,19 @@ The constructor is a special method of the class, which is called automatically 
 
 Each class can have different count of constructors with one only restriction – the count and type of their parameters have to be different (different signature). When creating an object of this class, one of the constructors is called.
 
-A class that has only <b>private</b> constructors cannot be instantiated. Such class usually has only static members and is called "utility class".
+A class that has only **private** constructors cannot be instantiated. Such class usually has only static members and is called "utility class".
 
 ### Releasing objects
 
-The .NET framework contains a <b>garbage collector</b> that is built into the CLR and cleans any unused objects from memory. This means we don't have to worry about unused objects and clean them ourselves. We can let the garbage collector handle it. However, if we need to manually ensure that an object gets released we can set it's value to <b>null</b> to make sure that the garbage collector will release or "clean" it:
+The .NET framework contains a **garbage collector** that is built into the CLR and cleans any unused objects from memory. This means we don't have to worry about unused objects and clean them ourselves. We can let the garbage collector handle it. However, if we need to manually ensure that an object gets released we can set it's value to **null** to make sure that the garbage collector will release or "clean" it:
 
     dogObject = null;
 
 ### Accessing objects
 
-To access the fields and properties of an object you use the <b>.</b> operator. You can access the fields and the properties either to read data from them or assign new data. 
+To access the fields and properties of an object you use the **.** operator. You can access the fields and the properties either to read data from them or assign new data. 
 
-In the case of a property, the access is implemented in exactly the same way as in the case of a field. This is achieved by the keywords <b>get</b> and <b>set</b> in the definition of the property which "get" and "set" the value of the property.
+In the case of a property, the access is implemented in exactly the same way as in the case of a field. This is achieved by the keywords **get** and **set** in the definition of the property which "get" and "set" the value of the property.
 
 For example if you defined a new parameterless Dog object like previously, you could assign the value of it's name property by using the syntax:
 
@@ -60,11 +66,11 @@ You can also call methods on objects that have been defined in the class it's in
 
     dogObject.Bark();
 
-This would execute the <b>Bark()</b> method defined in the <b>Dog</b> class on the <b>dogObject</b>.
+This would execute the **Bark()** method defined in the **Dog** class on the **dogObject**.
 
 ### Static fields and methods
 
-As mentioned, the data members of a class represent the states of the objects. They are directly related to the instances (objects) of the class. <b>Static members</b> are fields and methods that are associated with a class but not an instance of a class. They can be used in another class without the need of creating an instance from the class they are implemented in. Obviously you will use the <b>static</b> keyword to define something that is static. It's important to remember that static fields are initialized when the data type (the class) is used for the first time, during the execution of the program.
+As mentioned, the data members of a class represent the states of the objects. They are directly related to the instances (objects) of the class. **Static members** are fields and methods that are associated with a class but not an instance of a class. They can be used in another class without the need of creating an instance from the class they are implemented in. Obviously you will use the **static** keyword to define something that is static. It's important to remember that static fields are initialized when the data type (the class) is used for the first time, during the execution of the program.
 
 ## Classes
 
@@ -72,11 +78,11 @@ A class is a structure used to define the nature of grouped abstract objects. Ob
 
 The class represents a pattern, which describes the different states and behavior of the certain objects (the copies), which are created from this class (pattern).
 
-For example you could have a class named <b>Cat</b> defined, which describes the characteristics of cats and you could also have an object named <b>Max</b> defined, which would be an instance of the class <b>Cat</b> and contain the characteristics that the class defines likes it's data members and methods.
+For example you could have a class named **Cat** defined, which describes the characteristics of cats and you could also have an object named **Max** defined, which would be an instance of the class **Cat** and contain the characteristics that the class defines likes it's data members and methods.
 
 ### Declaring a class
 
-A class in C# is defined by the keyword <b>class</b>, followed by an identifier (name) of the class and a set of data members and methods in a separate code block. Classes in C# can contain fields, properties, and methods. Here is the definition of a class based on syntax rules:
+A class in C# is defined by the keyword **class**, followed by an identifier (name) of the class and a set of data members and methods in a separate code block. Classes in C# can contain fields, properties, and methods. Here is the definition of a class based on syntax rules:
 
     [<access_modifier>] class <class_name>
 
@@ -88,17 +94,17 @@ Nouns are usually used to name classes. The names of the classes begin with capi
 
 #### Declaration
 
-To <i>declare</i> a class, you define it's access modifier with the necessary keyword followed by the keyword <b>public</b> and the classes name.
+To *declare* a class, you define it's access modifier with the necessary keyword followed by the keyword **public** and the classes name.
 
     public class Dog
 
 #### Body
 
-The <i>body</i> of a class is similar to the body of a condition, loop, or method in which it is in closed between to curly braces and contains the logic it's used for.
+The *body* of a class is similar to the body of a condition, loop, or method in which it is in closed between to curly braces and contains the logic it's used for.
 
 #### Constructor
 
-The <i>constructor</i> is usually defined within the body of a class. It's used for creating new objects of the class. Constructors use the same name as the class and they're declared with an access modifier.
+The *constructor* is usually defined within the body of a class. It's used for creating new objects of the class. Constructors use the same name as the class and they're declared with an access modifier.
 
     public Dog()
     {
@@ -109,26 +115,26 @@ A constructor can contain parameters or it can be parameterless like above. The 
 
 #### Fields
 
-<i>Fields</i> are variables that are declared inside of a class.  They represent the data of the object. The values contained in the fields reflect the state of an object from the class. A field is defined with an access modifier keyword followed by it's type and name.
+*Fields* are variables that are declared inside of a class.  They represent the data of the object. The values contained in the fields reflect the state of an object from the class. A field is defined with an access modifier keyword followed by it's type and name.
 
     private string name;
     private int age;
     private int dob;
 
-The scope of a class field starts from the line where is declared and ends at the closing bracket of the body of the class. Fields can also be defined as <b>static</b>, which means it can be shared among all objects.
+The scope of a class field starts from the line where is declared and ends at the closing bracket of the body of the class. Fields can also be defined as **static**, which means it can be shared among all objects.
 
 Unlike local variables, object fields can be declared without being initialized because they have default values. When an object is created, all of the fields are initialized with their respective default values in .NET, unless they are initialized with some other value. The default values are usually 0, false, or null depending on the type of the field.
 
-Fields declared as <b>const</b> or <b>readonly</b> are called constants. They are used when a certain value is used several times. 
+Fields declared as **const** or **readonly** are called constants. They are used when a certain value is used several times. 
 
-The fields declared with <b>const</b> must be initialized during declaration. Afterwards their value cannot be changed. They can be accessed without having to create an instance (an object) of the class. They are common for all created objects in our program. When the code is compiled, the places where const fields are referred to are replaced with their actual values directly without the use of the constant variable at all. For this reason the const fields are called <i>compile-time constants</i> because they are replaced with the value during the compilation process.
+The fields declared with **const** must be initialized during declaration. Afterwards their value cannot be changed. They can be accessed without having to create an instance (an object) of the class. They are common for all created objects in our program. When the code is compiled, the places where const fields are referred to are replaced with their actual values directly without the use of the constant variable at all. For this reason the const fields are called *compile-time constants* because they are replaced with the value during the compilation process.
 
-The <b>readonly</b> modifier also creates fields with values that cannot be changed once they are assigned. Fields declared as readonly allow one-time initialization, either in the moment of the declaration or in the class constructors. Afterwords the values cannot be changed. For this reason, the readonly fields are called <i>run-time constants</i> because their values cannot be
+The **readonly** modifier also creates fields with values that cannot be changed once they are assigned. Fields declared as readonly allow one-time initialization, either in the moment of the declaration or in the class constructors. Afterwords the values cannot be changed. For this reason, the readonly fields are called *run-time constants* because their values cannot be
 changed after assignment and run-time, and because the process happens during the execution of the program (in runtime).
 
-C# allows the  defining of local variables that have names that match with the field names of the class. wwhen this occurs we say that the scope of the local variable overlays the field variable. This is known as <i>scope overlapping</i>.
+C# allows the  defining of local variables that have names that match with the field names of the class. wwhen this occurs we say that the scope of the local variable overlays the field variable. This is known as *scope overlapping*.
 
-For example if you have a class with an integer field named <b>myValue</b> that is equal to 5 and a method within the class that contains an local integer variable named <b>myValue</b> that is equal to 10, the local variable inside of the method will be used instead of the field if the method is called. 
+For example if you have a class with an integer field named **myValue** that is equal to 5 and a method within the class that contains an local integer variable named **myValue** that is equal to 10, the local variable inside of the method will be used instead of the field if the method is called. 
 
 Here is the example using code:
 
@@ -153,7 +159,7 @@ After executing this code the result will be:
 
     My value is: 10
 
-If you wanted to use and print the value of the field instead, you could use the <b>this</b> keyword like:
+If you wanted to use and print the value of the field instead, you could use the **this** keyword like:
 
     void PrintMyValue()
     {
@@ -165,7 +171,7 @@ The value of the result would then be 5.
 
 #### Properties
 
-<i>Properties</i> are used as a way to describe the characteristics of a class. They may be held by certain objects or they can be shared to all objects.
+*Properties* are used as a way to describe the characteristics of a class. They may be held by certain objects or they can be shared to all objects.
 
     private string Name
     {
@@ -179,13 +185,13 @@ The value of the result would then be 5.
         }
     }
 
-The keyword <b>this</b> is used in C# to reference the <i>current object</i> being used in the same class. This access option is only possible from non-static code (i.e. the method or block doesn't contain the <b>static</b> modifier).
+The keyword **this** is used in C# to reference the *current object* being used in the same class. This access option is only possible from non-static code (i.e. the method or block doesn't contain the **static** modifier).
 
-Just to note, when it's not explicitly required, the reserved keyword <b>this</b> can be skipped when we access the elements of the same class. However, for better code readability, it's recommended to use the <b>this</b> keyword even when not required.
+Just to note, when it's not explicitly required, the reserved keyword **this** can be skipped when we access the elements of the same class. However, for better code readability, it's recommended to use the **this** keyword even when not required.
 
 #### Methods 
 
-The last and sometimes most important element of a class are <i>methods</i>.
+The last and sometimes most important element of a class are *methods*.
 
     public void Bark()
     {
@@ -195,15 +201,15 @@ The last and sometimes most important element of a class are <i>methods</i>.
 
 ### Access levels and modifiers
 
-An <i>access modifier</i> is a reserved keyword in C# that is used to control the access to elements of the class and the class itself. In C# there are four access modifiers; <b>public</b>, <b>private</b>, <b>protected</b>, and <b>internal</b>.
+An *access modifier* is a reserved keyword in C# that is used to control the access to elements of the class and the class itself. In C# there are four access modifiers; **public**, **private**, **protected**, and **internal**.
 
-The <b>public</b> modifier is the <u>least</u> restricted access level in C#. It let's the compiler and the programmer know that the element it's used on is public and can be accessed from every class and namespace. Every other class can create objects from this type and has access to the methods and the fields of the public class.
+The **public** modifier is the <u>least</u> restricted access level in C#. It let's the compiler and the programmer know that the element it's used on is public and can be accessed from every class and namespace. Every other class can create objects from this type and has access to the methods and the fields of the public class.
 
-The <b>private</b> modifier is the <u>most</u> restricted access level in C#. It's used to indicate that the element that it's used on cannot be accessed from any other class (except the class in which it is defined) even if this class exists in the same namespace. Private classes like other private members are accessible only inside the class which defined them.
+The **private** modifier is the <u>most</u> restricted access level in C#. It's used to indicate that the element that it's used on cannot be accessed from any other class (except the class in which it is defined) even if this class exists in the same namespace. Private classes like other private members are accessible only inside the class which defined them.
 
-The <b>protected</b> modifier  can be accessed only by code in the same class or struct, or in a class that is derived from that class.
+The **protected** modifier  can be accessed only by code in the same class or struct, or in a class that is derived from that class.
 
-The <b>internal</b> modifier is used to limit the access to the elements of the class only to files from the same assembly, i.e. within the same project in Visual Studio. If you declare one class with access modifier internal it will be accessible only from the same namespace. As mentioned, it means that only the classes from the same assembly can create objects from this type class and to have access to the methods and fields. <b>Internal</b> is the default access modifier if no modifier is specified when a class is defined.
+The **internal** modifier is used to limit the access to the elements of the class only to files from the same assembly, i.e. within the same project in Visual Studio. If you declare one class with access modifier internal it will be accessible only from the same namespace. As mentioned, it means that only the classes from the same assembly can create objects from this type class and to have access to the methods and fields. **Internal** is the default access modifier if no modifier is specified when a class is defined.
 
 It's important to remember that the default access for everything in C# is "the most restricted access you could declare for that member". So while outer classes can be defaulted to internal access, inner classes and elements inside of the outer class will default to private. https://stackoverflow.com/questions/2521459/what-are-the-default-access-modifiers-in-c
 
@@ -211,7 +217,7 @@ If two classes are not visible one to other, then their members (fields and meth
 
 ### Utility classes
 
-A class that has only private constructors cannot be instantiated. Such class usually has only static members and is called "utility class". Many of the System classes in C# are examples of utility classes that don't need to be instantiated. <b>System.Environment</b>, <b>System.Console</b>, <b>System.String</b>, <b>System.Math</b>, and <b>System.Random</b> are a few of the most commonly used System classes in C#.
+A class that has only private constructors cannot be instantiated. Such class usually has only static members and is called "utility class". Many of the System classes in C# are examples of utility classes that don't need to be instantiated. **System.Environment**, **System.Console**, **System.String**, **System.Math**, and **System.Random** are a few of the most commonly used System classes in C#.
 
 ## Namespaces
 
@@ -219,7 +225,7 @@ A namespace is a named container or package for groups of classes which are usua
 
 ### Define a namespace
 
-Declaring your own namespaces can help you control the scope of class and method names in larger programming projects. You can declare a namespace by using the <b>namespace</b> keyword in C#.
+Declaring your own namespaces can help you control the scope of class and method names in larger programming projects. You can declare a namespace by using the **namespace** keyword in C#.
 
     namespace SampleNamespace
     {
@@ -234,7 +240,7 @@ Declaring your own namespaces can help you control the scope of class and method
 
 ### Nested namespaces
 
-Namespaces can contain other namespaces within themselves. This allows you to create a sort of hierarchy of namespaces and classes that are more easily distributed based on what their purposes. For example, the namespace <b>System</b> contains a nested namespace <b>Collections</b> so the full name of the namespace would obviously be <b>System.Collections</b>.
+Namespaces can contain other namespaces within themselves. This allows you to create a sort of hierarchy of namespaces and classes that are more easily distributed based on what their purposes. For example, the namespace **System** contains a nested namespace **Collections** so the full name of the namespace would obviously be **System.Collections**.
 
 It's important to remember that classes are required to have unique names only within the namespaces, in which they are defined. This is because classes in the namespace are uniquely defined in its context. In .NET Framework sometimes there are classes from different namespaces with matching names, for example:
 
@@ -244,18 +250,19 @@ It's important to remember that classes are required to have unique names only w
 
 ### Include a namespace
 
-It's often necessary to use the classes of a namespace multiple times. For convenience can include a namespace in the program so all classes defined in it can be used without the need to use their full names. To include a namespace you use the <b>using</b> keyword in C#.
+It's often necessary to use the classes of a namespace multiple times. For convenience can include a namespace in the program so all classes defined in it can be used without the need to use their full names. To include a namespace you use the **using** keyword in C#.
 
     using System.Windows.Forms
 
-It's important to remember that when including a namespace, the classes from the nested namespaces are not included. For example, the inclusion of namespaces <b>System.Collections</b> doesn't include the classes from its nested namespace <b>System.Collections.Generic</b>. When used you have to apply their full names or to include the higher level namespace that contains them.
+It's important to remember that when including a namespace, the classes from the nested namespaces are not included. For example, the inclusion of namespaces **System.Collections** doesn't include the classes from its nested namespace **System.Collections.Generic**. When used you have to apply their full names or to include the higher level namespace that contains them.
 
 ## References
 
-<ul>
-    <li>Fundamentals of Computer Programming with C# https://tinyurl.com/csharpprogramming</li>
-    <li>C# Reference https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/</li>
-    <li>C# Guide https://docs.microsoft.com/en-us/dotnet/csharp/</li>
-    <li>C# Tutorial https://www.tutorialspoint.com/csharp/</li>
-</ul>
+* [Fundamentals of Computer Programming with C#](https://tinyurl.com/csharpprogramming)
+* [C# Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)
+* [C# Guide](https://docs.microsoft.com/en-us/dotnet/csharp/)
+* [C# Tutorial](https://www.tutorialspoint.com/csharp/)
+
+---------------------------------------------------------------------------
+[Back to top](#csharp-notes)
 
