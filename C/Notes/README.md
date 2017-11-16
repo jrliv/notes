@@ -16,29 +16,27 @@
 
 ### How to compile and execute using GNU Compiler Collection (gcc)
 
-	Basic compile: gcc programsource.c -o executable.out
+Basic compile: `gcc programsource.c -o executable.out`
 
-	Execute the program: executable.out
+Execute the program: `executable.out`
 
 ### How to compile on Windows using Developer Command Prompt
 
 Open Developer Command Prompt for Visual Studio and cd to the directory containing the source file. 
 
-Enter <b>cl programsource.c</b>
+Enter: `cl programsource.c`
 
-You can use <b>/out:executable.exe</b> to name the executable file. Otherwise the file name will be the same as the source file.
+You can use `/out:executable.exe` to name the executable file. Otherwise the file name will be the same as the source file.
 
 ## Common libraries
 
-<ul>
-	<li>stdio.h: I/O functions</li>
-	<li>string.h: String functions</li>
-	<li>ctype.h: Character functions</li>
-	<li>math.h: Mathematics functions</li>
-	<li>time.h: Time and Date functions</li>
-	<li>stdlib.h: Miscellaneous functions</li>
-	<li>stdbool.h: Boolean types and functions</li>
-</ul>
+* stdio.h: I/O functions
+* string.h: String functions
+* ctype.h: Character functions
+* math.h: Mathematics functions
+* time.h: Time and Date functions
+* stdlib.h: Miscellaneous functions
+* stdbool.h: Boolean types and functions
 
 ## Printing output
 
@@ -51,31 +49,27 @@ Example:
 
 Here are a few different formats for data types used:
 
-<ul>
-	<li>%d - Prints decimal integer.</li>
-	<li>%6d	- Prints decimal integer of 6 chars.</li>
-	<li>%f - Prints floating point.</li>
-	<li>%4.2f - Prints floating point of 4 chars and 2 after decimal.</li>
-	<li>%c - Prints character.</li>
-	<li>%s - Prints string.</li>
-	<li>%p - Pointer.</li>
-	<li>%o - Octal.</li>
-	<li>%x - Hexadecimal.</li>
-</ul>
+* %d - Prints decimal integer.
+* %6d - Prints decimal integer of 6 chars.
+* %f - Prints floating point.
+* %4.2f - Prints floating point of 4 chars and 2 after decimal.
+* %c - Prints character.
+* %s - Prints string.
+* %p - Pointer.
+* %o - Octal.
+* %x - Hexadecimal.
 
 ### Escape sequences
 
-<ul>
-	<li>Newline character: \n</li>
-	<li>Tab character: \t</li>
-	<li>Backspace character: \b</li>
-	<li>Double-quote character: \"</li>
-	<li>Backlash character: \\</li>
-</ul>
+* Newline character: \n
+* Tab character: \t
+* Backspace character: \b
+* Double-quote character: \"
+* Backlash character: \\\
 
 ### How to print a random number
 
-To print a random number, use the <b>srand()</b> and <b>time()</b> methods to create a seed. Then assign the random value from the <b>rand()</b> method to a variable like below:
+To print a random number, use the **srand()** and **time()** methods to create a seed. Then assign the random value from the **rand()** method to a variable like below:
 
 	srand(time(NULL));
     int number_to_guess = rand() % 100 + 1;	// generates a random number between 1 and 100
@@ -94,7 +88,7 @@ This will allow the user to enter any kind of input necessary (letters, numbers,
 
 ### scanf()
 
-scanf() is a C library function that allows a program to get data from the user. Like printf() it has a set of arguments for formatting and a second set for the values. The second group of arguments for scanf often include an ampersand symbol because they refer to pointers and not an actual location.
+**scanf()** is a C library function that allows a program to get data from the user. Like printf() it has a set of arguments for formatting and a second set for the values. The second group of arguments for scanf often include an ampersand symbol because they refer to pointers and not an actual location.
 
 Example:
 
@@ -102,15 +96,15 @@ Example:
 
 ### getchar()
 
-getchar() is another C stdio library function that reads a single character from stdin (standard input).
+**getchar()** is another C stdio library function that reads a single character from stdin (standard input).
 
 getchar() has no parameters and its sole function is to read the next character as an unsigned char and return its value converted to an integer.
 
 ### gets() and puts()
 
-The gets() and puts() functions are two other options that can be used for working with input and output.
+The **gets()** and **puts()** functions are two other options that can be used for working with input and output.
 
-*Note: I tried used these once and couldn't get them to work. Maybe I was doing something wrong. Will update if I learn anything new about these functions.
+*Note:* I tried used these once and couldn't get them to work. Maybe I was doing something wrong. Will update if I learn anything new about these functions.
 
 ## Pointers
 
@@ -118,16 +112,17 @@ A pointer is a variable that "points" to the memory address of another variable.
 
 	int *pointer_var = 5;	// Note: this won't compile it needs a cast
 
-The statement above means the value that is in the memory address pointed to by <b>pointer_var</b> is equal to 5.
+The statement above means the value that is in the memory address pointed to by **pointer_var** is equal to 5.
 
 If you tried to change the value with the statement:
 
 	int pointer_var = 10;
 
-It would not make sense. The statement would mean that the memory address for <b>pointer_var</b> is 10.
+It would not make sense. The statement would mean that the memory address for **pointer_var** is 10.
 
-<b>&</b> references the address of the value (means "the address of")
-<b>*</b> references the value stored in the address (means "the value pointed by")
+**&** references the address of the value (means "the address of")
+
+**\*** references the value stored in the address (means "the value pointed by")
 
 ### Example
 
@@ -144,17 +139,15 @@ Initialize a pointer with another variable's memory address
 
 	// ptr = 100;  doesn't work; like trying to set the memory address to 100
 
-For those two variables <b>intVar</b> is the value while <b>&intVar</b> is the memory address of the value. <b>*ptrVar</b> is the value while <b>ptrVar</b> is the memory address of the value.
+For those two variables **intVar** is the value while **&intVar** is the memory address of the value. ***ptrVar** is the value while **ptrVar** is the memory address of the value.
 
 ### Dereferencing pointers
 
 One important component of using pointers with structures is the concept of ‘de-referencing’ a pointer.
 
-To ‘de-reference’ we need to ensure we return a value, not the memory address. Use the * de-reference operator to act on the value
+To ‘de-reference’ we need to ensure we return a value, not the memory address. Use the * de-reference operator to act on the value: `*pointer = 25`
 
-	*pointer = 25
-
-The <b>&</b> operator is the reference operator (remember "address of") while <b>*</b> is the dereference operator (remember "value pointed to by").
+The **&** operator is the reference operator (remember "address of") while **\*** is the dereference operator (remember "value pointed to by").
 
 ## Arrays
 
@@ -210,7 +203,7 @@ In a function, you pass the address of the array like:
 
 ## Strings
 
-A string in C is an array of characters that end with a null (\0). C doesn't have a built in data type for strings but it has a library for working with and manipulating strings called <b><string.h></b>.
+A string in C is an array of characters that end with a null (\0). C doesn't have a built in data type for strings but it has a library for working with and manipulating strings called **<string.h>**.
 
 	my_name[] = {“Jae Logan”};	// will have a size of 10 elements number 0 – 9.
 
@@ -232,16 +225,16 @@ A string in C is an array of characters that end with a null (\0). C doesn't hav
 
 ### Common string functions
 
-<ul>
-	<li><b>strlen()</b> – returns the length of a string</li>
-	<li><b>strcpy()</b> – copies a null terminated string into a variable</li>
-	<li><b>strcat()</b> – concatenates strings</li>
-	<li><b>strcmp()</b> – compares the values of strings</li>
-</ul>
+
+* **strlen()** – returns the length of a string
+* **strcpy()** – copies a null terminated string into a variable
+* **strcat()** – concatenates strings
+* **strcmp()** – compares the values of strings
+
 
 ### How to use strcmp() to compare strings
 
-Here is a quick example of how to use <b>strcmp()</b> to compare two strings. In this example if the string in <b>player_guess</b> is equal to <b>PASS</b> then a message will be printed.
+Here is a quick example of how to use **strcmp()** to compare two strings. In this example if the string in **player_guess** is equal to **PASS** then a message will be printed.
 
 	if (strcmp(player_guess, "PASS"))
     {
@@ -250,31 +243,29 @@ Here is a quick example of how to use <b>strcmp()</b> to compare two strings. In
 
 ### Convert string to integer
 
-You can use the `atoi()` or `strtol()` functions from the `stdlib.h` class.
+You can use the **atoi()** or **strtol()** functions from the **stdlib.h** class.
 
 ## Working with files 
 
 ### File operations
 
-<ul>
-	<li><b>fopen()</b> – Creates a new file for use or opens a new existing file for use</li>
-	<li><b>fclose()</b> – Closes a file which has been opened for use</li>
-	<li><b>getc()</b> – Reads a character from a file</li>
-	<li><b>putc()</b> – Writes a character to a file</li>
-	<li><b>fprintf()</b> – Writes a set of data values to a file</li>
-	<li><b>fscanf()</b> – Reads a set of data values from a file</li>
-	<li><b>getw()</b> – Reads a integer from a file</li>
-	<li><b>putw()</b> – Writes an integer to the file</li>
-	<li><b>fseek()</b> – Sets the position to a desired point in the file</li>
-	<li><b>ftell()</b> - Gives the current position in the file</li>
-</ul>
+* **fopen()** – Creates a new file for use or opens a new existing file for use
+* **fclose()** – Closes a file which has been opened for use
+* **getc()** – Reads a character from a file
+* **putc()** – Writes a character to a file
+* **fprintf()** – Writes a set of data values to a file
+* **fscanf()** – Reads a set of data values from a file
+* **getw()** – Reads a integer from a file
+* **putw()** – Writes an integer to the file
+* **fseek()** – Sets the position to a desired point in the file
+* **ftell()** - Gives the current position in the file
 
 ### Open a file
 
 	FILE *pointer_to_file
 	pointer_to_file = fopen("filename", "mode");
 
-The FILE statement declares a variable <b>pointer_to_file</b> as a pointer to the datatype FILE
+The FILE statement declares a variable **pointer_to_file** as a pointer to the datatype FILE
 
 FILE is a structure that has been defined in the stdio.h I/O library.
 
@@ -283,14 +274,12 @@ When we open the file for use, if the file exists it will be re-initialized and 
 
 The second statement also specifies the purpose for which the file has been opened. The mode provides this information:
 
-<ul>
-	<li>r - open the file for read only</li>
-	<li>w - open the file for over write</li>
-	<li>a - open the file for appending</li>
-	<li>r+ - open the file for read and over write data at beginning</li>
-	<li>w+ - open the file for read and over write</li>
-	<li>a+ - open the file for read and appending</li>
-</ul>
+* r - open the file for read only
+* w - open the file for over write
+* a - open the file for appending
+* r+ - open the file for read and over write data at beginning
+* w+ - open the file for read and over write
+* a+ - open the file for read and appending
 
 	pointer_to_file = fopen("user_data", "r");	// opens user_data file for reading
 
@@ -416,7 +405,7 @@ Refer to individual members of the structures:
 
 If you are using a pointer to a structure when you need to act on a member of the structure, you need to de-reference the pointer to the structure to return or act on the member.
 
-You do this by using the structure de-reference operator <b>-></b>
+You do this by using the structure de-reference operator **->**
 
 	*struct_pointer;
 	struct_pointer -> name = "Brandon";
@@ -429,7 +418,7 @@ You can also place a pointer in paraenthesis to dereference it as well.
 
 ### Creating custom types
 
-Using the C keyword <b>typedef</b> you can define your own data types and structures.
+Using the C keyword **typedef** you can define your own data types and structures.
 
 Here is an exmaple of defining a datatype.
 
@@ -449,3 +438,6 @@ Here is an example of defining a structure then using it.
 
 	customer_db *cust_pointer;
 	cust_pointer -> name = "Brandon";
+
+------------------------------------------------
+[Back to top](#c-notes)
