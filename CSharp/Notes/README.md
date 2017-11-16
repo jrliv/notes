@@ -5,6 +5,7 @@
 * [Objects](#objects)
 * [Classes](#classes)
 * [Namespaces](#namespaces)
+* [References and resources](#references-and-resources)
 
 ## Objects
 
@@ -256,7 +257,7 @@ It's often necessary to use the classes of a namespace multiple times. For conve
 
 It's important to remember that when including a namespace, the classes from the nested namespaces are not included. For example, the inclusion of namespaces **System.Collections** doesn't include the classes from its nested namespace **System.Collections.Generic**. When used you have to apply their full names or to include the higher level namespace that contains them.
 
-## References
+## References and resources
 
 * [Fundamentals of Computer Programming with C#](https://tinyurl.com/csharpprogramming)
 * [C# Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/)
