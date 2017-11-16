@@ -39,7 +39,7 @@ In order to improve performance, the older CPU architecture that performed fetch
 
 Since current technology can't satisfy the goals of having memory that is extremely fast, abundant, and cheap, most systems use a layered hierarchy approach.
 
-![Memory hierarchy](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/MemoryHierarchy.JPG)
+![Memory hierarchy](/OperatingSystems/Images/MemoryHierarchy.JPG)
 
 The top layers of the hierarchy are usually the fastest memory with the highest cost and lowest capacity. The bottom layers consist of slower memory that have higher capacity and lower costs.
 
@@ -89,7 +89,7 @@ An **interrupt** is a signal that's initiated by an I/O device to signal the com
 
 > Interrupts can happen at inconvenient times (like when another interrupt handler is running). The CPU can disable interrupts temporarily complete an operation, and then re-enable interrupts to prevent confusion. If multiple devices signal interrupts, static priorities are often assigned to devices allowing the higher priority devices to win.
 
-![I/O Process](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/IO-Process.JPG)
+![I/O Process](/OperatingSystems/Images/IO-Process.JPG)
 
 ## Processes
 
@@ -132,7 +132,7 @@ Processes can create one or more processes that are called **child processes**. 
 
 > There are four possible transitions among these three states:
 
-![Process states](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessStates.JPG)
+![Process states](/OperatingSystems/Images/ProcessStates.JPG)
 
 ### Implementation
 
@@ -140,7 +140,7 @@ Processes can create one or more processes that are called **child processes**. 
 
 Here are some of the fields of a typical process table entry:
 
-![Process table](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessTable.JPG)
+![Process table](/OperatingSystems/Images/ProcessTable.JPG)
 
 ## System Calls
 
@@ -161,7 +161,7 @@ As an example, using a similar idea projects in GitHub are often forked in order
 > 2. What is the value returned to the parent? **The id of the child.** 
 > 3. What is the value returned to the child process that gets created by the fork? **0**
 
-![Process management system calls](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessManagementSystemCalls.JPG)
+![Process management system calls](/OperatingSystems/Images/ProcessManagementSystemCalls.JPG)
 
 > In most cases, after a fork, the child will need to execute different code from the parent. Consider the case of the shell. It reads a command from the terminal, forks off a child process, waits for the child to execute the command, and then reads the next command when the child terminates. To wait for the child to finish, the parent executes a **waitpid(pid, &statloc, options)** system call, which just waits until the child terminates (any child if more than one exists). Waitpid can wait for a specific child, or for any old child by setting the first parameter to −1. When waitpid completes, the address pointed to by the second parameter, statloc, will be set to the child process’ exit status (normal or abnormal termination and exit value). Various options are also provided, specified by the third parameter. For example, returning immediately if no child has already exited.
 
@@ -178,7 +178,7 @@ As an example, using a similar idea projects in GitHub are often forked in order
 
 > The data segment grows upward and the stack grows downward. Between them is a gap of unused address space. The stack grows into the gap automatically, as needed, but expansion of the data segment is done explicitly by using a system call **brk**, which specifies the new address where the data segment is to end. This call, however, is not defined by the POSIX standard, since programmers are encouraged to use the **malloc** library procedure in C for dynamically allocating storage, and the underlying implementation of malloc was not thought to be a suitable subject for standardization since few programmers use it directly and it is doubtful that anyone even notices that brk is not in POSIX.
 
-![Process memory segments](https://github.com/jrliv/notes/blob/master/OperatingSystems/Images/ProcessMemorySegments.JPG)
+![Process memory segments](/OperatingSystems/Images/ProcessMemorySegments.JPG)
 
 ## Operating system structures
 
