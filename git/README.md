@@ -39,7 +39,7 @@ Click the drop down button that says "Embed" then click "Clone via SSH" from the
 
 Click the Copy to clipboard button or select the string and copy it.
 
-In terminal enter <b>git clone</b> then paste the gists address that was copied previously.
+In terminal enter **git clone** then paste the gists address that was copied previously.
 
     git clone git@gist.github.com:shaaddresshere.git
 
@@ -60,7 +60,7 @@ In terminal enter <b>git clone</b> then paste the gists address that was copied 
 
 Create repository for project then commit and push everything.
 
-Create a directory called <b>project</b> or <b>dist</b> and add an <b>index.html</b> file. Add and commit the changes.
+Create a directory called **project** or **dist** and add an **index.html** file. Add and commit the changes.
 
     git add project
     git commit -am "Add project page"
