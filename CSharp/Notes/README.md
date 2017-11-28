@@ -133,7 +133,7 @@ The fields declared with **const** must be initialized during declaration. After
 The **readonly** modifier also creates fields with values that cannot be changed once they are assigned. Fields declared as readonly allow one-time initialization, either in the moment of the declaration or in the class constructors. Afterwords the values cannot be changed. For this reason, the readonly fields are called *run-time constants* because their values cannot be
 changed after assignment and run-time, and because the process happens during the execution of the program (in runtime).
 
-C# allows the  defining of local variables that have names that match with the field names of the class. wwhen this occurs we say that the scope of the local variable overlays the field variable. This is known as *scope overlapping*.
+C# allows the  defining of local variables that have names that match with the field names of the class. When this occurs we say that the scope of the local variable overlays the field variable. This is known as *scope overlapping*.
 
 For example if you have a class with an integer field named **myValue** that is equal to 5 and a method within the class that contains an local integer variable named **myValue** that is equal to 10, the local variable inside of the method will be used instead of the field if the method is called. 
 
